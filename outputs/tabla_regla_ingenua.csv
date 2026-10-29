@@ -1,0 +1,5 @@
+modelo,mora predicha media,aprobación ingenua,FDR ingenua
+XGBoost,0.0991,0.5941,0.0525
+Ensamble,0.0999,0.6006,0.0553
+SNGP,0.0968,0.6206,0.0575
+GP,0.0817,0.7302,0.0675

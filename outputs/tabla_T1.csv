@@ -1,0 +1,13 @@
+Modelo,Segmento,AUC,Log-loss,ECE
+XGBoost,Total,0.7523,0.2476,0.0017
+XGBoost,Thin-file,0.7203,0.2979,0.0039
+XGBoost,Resto,0.756,0.2392,0.0015
+GP,Total,0.737,0.2518,0.0039
+GP,Thin-file,0.6996,0.3061,0.0196
+GP,Resto,0.7442,0.2427,0.0061
+SNGP,Total,0.7471,0.2492,0.0039
+SNGP,Thin-file,0.7091,0.3013,0.008
+SNGP,Resto,0.7522,0.2405,0.0044
+Ensamble,Total,0.749,0.2486,0.003
+Ensamble,Thin-file,0.7126,0.3002,0.0078
+Ensamble,Resto,0.7535,0.2399,0.0025

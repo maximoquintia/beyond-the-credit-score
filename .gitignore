@@ -1,0 +1,15 @@
+# Entorno y cachés de Python
+.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Datos crudos (pesan cientos de MB: se bajan de Kaggle)
+data/
+
+# outputs se regenera corriendo los notebooks. Sí subimos las figuras y las tablas del informe.
+outputs/*
+!outputs/*.pdf
+!outputs/*.png
+!outputs/tabla_T*.csv
+!outputs/tabla_regla_ingenua.csv
