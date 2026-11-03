@@ -31,8 +31,8 @@ Correr los notebooks en este orden: **01, 02, 03, 05, 08, 04**, y después **06,
 Atajos:
 
 - Para replicar el experimento principal (tablas 1 y 2, figuras 2 y 3) sin reentrenar nada, alcanza con tener `outputs/preds/` e `outputs/ids_test.csv` y correr el 04.
-- Para replicar las figuras 4, 5 y 6 alcanza con lo mismo y correr el 10.
-- Para replicar la simulación y las medias lunas (figuras 1, 7 y 8) no hace falta ningún dato: se corren el 06 y el 07.
+- Para replicar las figuras 3 y 4 (y las de apoyo) alcanza con lo mismo, más `datos_procesados.npz`, y correr el 10.
+- Para replicar la simulación y las medias lunas (figuras 1, 5 y 6) no hace falta ningún dato: se corren el 06 y el 07.
 - `python -m pytest tests/` corre las pruebas de Conformal Selection (desde la carpeta del proyecto, para que encuentre `conformal.py`).
 
 ## Semillas y qué esperar
@@ -50,13 +50,15 @@ La regla del protocolo: todo lo que se elige (las variables y la escala del GP, 
 | Tabla 1 (AUC, log-loss y ECE) | 04 | Bloque 13, `outputs/tabla_T1.csv` |
 | Tabla 2 (aprobación y FDR, con la regla ingenua) | 04 | Bloques 9 y 14, `outputs/tabla_T2.csv`, `outputs/tabla_regla_ingenua.csv` |
 | Figura 2 (aprobación contra α) | 04 | `outputs/F2_aprobacion.pdf` |
-| Figura 3 y el cociente 1,12 | 04 | `outputs/F3_varianza.pdf` |
+| Figura 3 (cajas) y los cinco cocientes de medianas | 10 (Bloque 6) | `outputs/F3_cajas.pdf` |
+| El cociente 1,12 de la varianza de la SNGP (figura de apoyo) | 04 | `outputs/F3_varianza.pdf` |
 | Diferencia de AUC ensamble − XGBoost con su intervalo bootstrap | 04 (Bloque 12) y 08 (Bloque 3) | |
 | Cocientes 0,79 (GP), 1,01 y 1,19 (ensamble) y 0,998 (kNN) | 03, 08 y 09 | |
 | λ = 0 para la SNGP | 05 | Bloque 6 |
 | λ = 0 para XGBoost + distancia | 09 | Bloque 2 |
 | Terciles de discrepancia y de varianza GP | 08 | Bloque 5 |
-| Figuras 4, 5 y 6 (con el ρ = 0,94 y el 92% / 9,2% del mapa) | 10 | `outputs/extra_*.pdf` |
-| Figura 7 y la ventaja según distancia | 06 | `outputs/F4_simulacion.pdf`, `outputs/sim_resumen.csv` |
-| Figura 8 (FDR en la simulación) | 06 | `outputs/F5_fdr_thin_sim.pdf` |
+| Figura 4 (con el ρ = 0,94) | 10 | `outputs/extra_rangos_xgb_ensamble.pdf` |
+| Figuras de apoyo: densidades con el corte conformal y mapa de la simulación (con el 92% / 9,2%) | 10 | `outputs/extra_densidades_conformal.pdf`, `outputs/extra_mapa_simulacion.pdf` |
+| Figura 5 y la ventaja según distancia | 06 | `outputs/F4_simulacion.pdf`, `outputs/sim_resumen.csv` |
+| Figura 6 (FDR en la simulación) | 06 | `outputs/F5_fdr_thin_sim.pdf` |
 | Cómo ordena cada modelo a los thin-file de la trampa | 06 | Bloque 6 |

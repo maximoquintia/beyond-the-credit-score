@@ -40,10 +40,10 @@ Todo corre en CPU. `REPRODUCIBILIDAD.md` tiene el detalle (versiones, semillas, 
 | `05_sngp` | La SNGP: entrenamiento y elección de λ y de la arquitectura en validación | `preds/sngp_vars_*.csv` | 30 min |
 | `08_ensamble` | Las 5 SNGP, la comparación con XGBoost y el diagnóstico por terciles de incertidumbre | `preds/sngp_ensamble.npz`, `ensamble_resultados.csv` | 15 min |
 | `04_experimento` | El experimento principal: 4 modelos, 20 particiones del pool, por segmento y agrupado, y la regla ingenua | `tabla_T1.csv`, `tabla_T2.csv`, `tabla_regla_ingenua.csv`, `resultados_experimento.csv`, F2, F3 | 5 min |
-| `06_simulacion` | Thin-file a distancia controlada (XGBoost, SNGP y ensamble) | `sim_*.csv`, F4, F5 de la simulación | 1 hora |
+| `06_simulacion` | Thin-file a distancia controlada (XGBoost, SNGP y ensamble) | `sim_*.csv`, F4 y F5 de la simulación (Figuras 5 y 6) | 1 hora |
 | `07_medias_lunas` | El ejemplo en 2D del mecanismo | F1 | 5 min |
 | `09_xgb_distancia` | XGBoost corregido por distancia (kNN y varianza de la SNGP) | `xgb_distancia_resultados.csv` | 5 min |
-| `10_figuras_extra` | Las figuras 4, 5 y 6 del informe | `extra_*` | 5 min |
+| `10_figuras_extra` | La Figura 3 (cajas), la 4 (rangos) y dos figuras de apoyo | `F3_cajas`, `extra_*` | 5 min |
 
 Los tiempos son en una notebook sin GPU y varían bastante.
 
@@ -55,14 +55,14 @@ Los tiempos son en una notebook sin GPU y varían bastante.
 |---|---|---|---|
 | Figura 1 | Medias lunas: probabilidad e incertidumbre de los 4 modelos en 2D | `outputs/F1_medias_lunas.pdf` | 07 |
 | Figura 2 | Tasa de aprobación contra α, thin-file y resto | `outputs/F2_aprobacion.pdf` | 04 |
-| Figura 3 | Varianza de la SNGP, thin-file contra resto | `outputs/F3_varianza.pdf` | 04 |
+| Figura 3 | Cajas de las cinco medidas de incertidumbre o distancia, thin-file contra resto | `outputs/F3_cajas.pdf` | 10 |
 | Figura 4 | Percentil de riesgo de cada thin-file según XGBoost y según el ensamble | `outputs/extra_rangos_xgb_ensamble.pdf` | 10 |
-| Figura 5 | Densidades del riesgo predicho con el corte de Conformal Selection | `outputs/extra_densidades_conformal.pdf` | 10 |
-| Figura 6 | Mapa de la simulación en 2D con la varianza de la SNGP | `outputs/extra_mapa_simulacion.pdf` | 10 |
-| Figura 7 | Simulación: incertidumbre contra distancia, aprobación y ventaja según distancia | `outputs/F4_simulacion.pdf` | 06 |
-| Figura 8 | FDR dentro de thin-file en la simulación, por segmento contra agrupada | `outputs/F5_fdr_thin_sim.pdf` | 06 |
+| Figura 5 | Simulación: incertidumbre contra distancia, aprobación y ventaja según distancia | `outputs/F4_simulacion.pdf` | 06 |
+| Figura 6 | FDR dentro de thin-file en la simulación, por segmento contra agrupada | `outputs/F5_fdr_thin_sim.pdf` | 06 |
 | Tabla 1 | AUC, log-loss y ECE por modelo y segmento | `outputs/tabla_T1.csv` | 04 |
 | Tabla 2 | Aprobación y FDR por segmento, agrupada e ingenua | `outputs/tabla_T2.csv` y `outputs/tabla_regla_ingenua.csv` (el Bloque 14 del 04 la imprime armada) | 04 |
+
+Además hay tres figuras de apoyo que no están en la versión final del informe: `F3_varianza` (04), `extra_densidades_conformal` y `extra_mapa_simulacion` (10). Todas las figuras usan la misma paleta azul-violeta, definida en `estilo.py` (cambiar un color ahí cambia todas al volver a correr los notebooks).
 
 Los nombres de los archivos no siguen la numeración del informe porque las figuras se fueron armando antes que el texto; esta tabla es la que manda.
 
@@ -71,7 +71,7 @@ Los nombres de los archivos no siguen la numeración del informe porque las figu
 ```
 beyond-credit-score/
 ├── 01_datos.ipynb ... 10_figuras_extra.ipynb
-├── conformal.py, redes.py
+├── conformal.py, redes.py, estilo.py (paleta de las figuras)
 ├── tests/test_conformal.py
 ├── requirements.txt
 ├── README.md, REPRODUCIBILIDAD.md, notas.md
