@@ -5,11 +5,11 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Datos crudos (pesan cientos de MB: se bajan de Kaggle)
-data/
+codigo/data/
 
 # outputs se regenera corriendo los notebooks. Sí subimos las figuras y las tablas del informe.
-outputs/*
-!outputs/*.pdf
-!outputs/*.png
-!outputs/tabla_T*.csv
-!outputs/tabla_regla_ingenua.csv
+codigo/outputs/*
+!codigo/outputs/*.pdf
+!codigo/outputs/*.png
+!codigo/outputs/tabla_T*.csv
+!codigo/outputs/tabla_regla_ingenua.csv

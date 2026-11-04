@@ -26,13 +26,13 @@ Trabajo final de Machine Learning para Economistas (UTDT, 2026), de Máximo Quin
 ## Cómo correrlo
 
 1. Instalar las dependencias: `pip install -r requirements.txt` (más `ipykernel` si tu editor lo pide para abrir notebooks).
-2. Tener en `data/` los archivos `application_train.csv` y `bureau.csv`. En la carpeta entregada ya están; si clonaste el repo de GitHub, hay que bajarlos de Kaggle (competencia *Home Credit Default Risk*).
+2. Tener en `codigo/data/` los archivos `application_train.csv` y `bureau.csv`. En la carpeta entregada ya están; si clonaste el repo de GitHub, hay que bajarlos de Kaggle (competencia *Home Credit Default Risk*).
 3. Correr los notebooks en este orden: **01, 02, 03, 05, 08, 04**, y después **06, 07, 09 y 10** en cualquier orden. El 04 y el 10 necesitan las predicciones que guardan el 05 y el 08.
-4. Opcional: `python -m pytest tests/` chequea por simulación que Conformal Selection controla la FDR.
+4. Opcional: `python -m pytest tests/` (desde `codigo/`) chequea por simulación que Conformal Selection controla la FDR.
 
 Todo corre en CPU. `REPRODUCIBILIDAD.md` tiene el detalle (versiones, semillas, atajos para no reentrenar).
 
-| Notebook | Qué hace | Qué guarda en `outputs/` | Tiempo aprox. |
+| Notebook | Qué hace | Qué guarda en `codigo/outputs/` | Tiempo aprox. |
 |---|---|---|---|
 | `01_datos` | Limpia y procesa los datos, define thin-file y parte en train / calib / test | `datos_procesados.npz`, `ids_*.csv`, `preproc.joblib`, `nombres_columnas.csv` | 2 min |
 | `02_xgboost` | Entrena XGBoost y mira cómo le va con los thin-file | `preds/xgboost_*.csv` | 5 min |
@@ -53,14 +53,14 @@ Los tiempos son en una notebook sin GPU y varían bastante.
 
 | En el informe | Qué muestra | Archivo | Notebook |
 |---|---|---|---|
-| Figura 1 | Medias lunas: probabilidad e incertidumbre de los 4 modelos en 2D | `outputs/F1_medias_lunas.pdf` | 07 |
-| Figura 2 | Tasa de aprobación contra α, thin-file y resto | `outputs/F2_aprobacion.pdf` | 04 |
-| Figura 3 | Cajas de las cinco medidas de incertidumbre o distancia, thin-file contra resto | `outputs/F3_cajas.pdf` | 10 |
-| Figura 4 | Percentil de riesgo de cada thin-file según XGBoost y según el ensamble | `outputs/extra_rangos_xgb_ensamble.pdf` | 10 |
-| Figura 5 | Simulación: incertidumbre contra distancia, aprobación y ventaja según distancia | `outputs/F4_simulacion.pdf` | 06 |
-| Figura 6 | FDR dentro de thin-file en la simulación, por segmento contra agrupada | `outputs/F5_fdr_thin_sim.pdf` | 06 |
-| Tabla 1 | AUC, log-loss y ECE por modelo y segmento | `outputs/tabla_T1.csv` | 04 |
-| Tabla 2 | Aprobación y FDR por segmento, agrupada e ingenua | `outputs/tabla_T2.csv` y `outputs/tabla_regla_ingenua.csv` (el Bloque 14 del 04 la imprime armada) | 04 |
+| Figura 1 | Medias lunas: probabilidad e incertidumbre de los 4 modelos en 2D | `codigo/outputs/F1_medias_lunas.pdf` | 07 |
+| Figura 2 | Tasa de aprobación contra α, thin-file y resto | `codigo/outputs/F2_aprobacion.pdf` | 04 |
+| Figura 3 | Cajas de las cinco medidas de incertidumbre o distancia, thin-file contra resto | `codigo/outputs/F3_cajas.pdf` | 10 |
+| Figura 4 | Percentil de riesgo de cada thin-file según XGBoost y según el ensamble | `codigo/outputs/extra_rangos_xgb_ensamble.pdf` | 10 |
+| Figura 5 | Simulación: incertidumbre contra distancia, aprobación y ventaja según distancia | `codigo/outputs/F4_simulacion.pdf` | 06 |
+| Figura 6 | FDR dentro de thin-file en la simulación, por segmento contra agrupada | `codigo/outputs/F5_fdr_thin_sim.pdf` | 06 |
+| Tabla 1 | AUC, log-loss y ECE por modelo y segmento | `codigo/outputs/tabla_T1.csv` | 04 |
+| Tabla 2 | Aprobación y FDR por segmento, agrupada e ingenua | `codigo/outputs/tabla_T2.csv` y `codigo/outputs/tabla_regla_ingenua.csv` (el Bloque 14 del 04 la imprime armada) | 04 |
 
 Además hay tres figuras de apoyo que no están en la versión final del informe: `F3_varianza` (04), `extra_densidades_conformal` y `extra_mapa_simulacion` (10). Todas las figuras usan la misma paleta azul-violeta, definida en `estilo.py` (cambiar un color ahí cambia todas al volver a correr los notebooks).
 
@@ -70,15 +70,15 @@ Los nombres de los archivos no siguen la numeración del informe porque las figu
 
 ```
 beyond-credit-score/
-├── 01_datos.ipynb ... 10_figuras_extra.ipynb
-├── conformal.py, redes.py, estilo.py (paleta de las figuras)
-├── tests/test_conformal.py
-├── requirements.txt
-├── README.md, REPRODUCIBILIDAD.md, notas.md
-├── informe/      (el PDF del informe)
-├── data/          (en la entrega están los dos CSV; en GitHub no, se bajan de Kaggle)
-└── outputs/       (en git solo las figuras y las tablas; el resto se regenera corriendo los notebooks)
-    └── preds/     (las predicciones de cada modelo)
+├── README.md, REPRODUCIBILIDAD.md, notas.md, requirements.txt
+├── informe/             (el PDF del informe)
+└── codigo/
+    ├── 01_datos.ipynb ... 10_figuras_extra.ipynb
+    ├── conformal.py, redes.py, estilo.py (paleta de las figuras)
+    ├── tests/test_conformal.py
+    ├── data/            (en la entrega están los dos CSV; en GitHub no, se bajan de Kaggle)
+    └── outputs/         (en git solo las figuras y las tablas; el resto se regenera corriendo los notebooks)
+        └── preds/       (las predicciones de cada modelo)
 ```
 
 ## Referencias principales
