@@ -70,7 +70,7 @@ Los nombres de los archivos no siguen la numeración del informe porque las figu
 
 ```
 beyond-credit-score/
-├── README.md, REPRODUCIBILIDAD.md, notas.md, requirements.txt
+├── README.md, REPRODUCIBILIDAD.md, requirements.txt
 ├── informe/             (el PDF del informe)
 └── codigo/
     ├── 01_datos.ipynb ... 10_figuras_extra.ipynb
